@@ -1,0 +1,62 @@
+*{
+    font-family: 'Lato';
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar{
+    background-color: red;
+}
+
+.navbar a{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar a:hover{
+    color: black;
+}
+
+.box{
+    display: inline-block;
+}
+
+.item-card{
+    margin: 20px;
+    padding: 1em;
+    border: 1px solid lightgray;
+    box-shadow: 6px 6px 3px lightgray;
+}
+
+.item-price, .item-title{
+    color: black;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.item-title, .order-title{
+    font-size: 24px;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.item-quantity{
+    font-weight: bold;
+    color: black;
+    font-size: 18px;
+}
+
+.item-name{
+    color: gray;
+    font-size: 18px;
+}
+
+input{
+    width: 30px;
+    border: none;
+    text-align: center;
+}
+

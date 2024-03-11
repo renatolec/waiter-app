@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anotando pedido</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link th:href="@{/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container-fluid">
+<div class="row navbar">
+    <div class="col text-center">
+        <a th:href="@{/update(orderId=${order.id})}"> Cardápio </a>
+    </div>
+    <div class="col text-center">
+        <a th:href="@{/orders}"> Home</a>
+    </div>
+    <div class="col text-center">
+        <a th:href="@{/overview(orderId=${order.id})}"> Pedido </a>
+    </div>
+</div>
+</div>
+
+<div class="container text-center" id="accordion">
+
+    <div class="row in border rounded mt-3" id="menu" >
+        <div class="col">
+
+            <div class="row mt-3">
+                <h4>Cardápio</h4>
+            </div>
+
+            <div class="row">
+                <div class="col">
+
+                    <div class="row border rounded m-5 p-3 shadow">
+                        <div class="col">
+
+                            <div class="row">
+
+                                <div class="col text-start my-2">
+                                    <a href="#item1" data-bs-toggle="collapse" class="item-title align-middle"> Simples </a>
+                                </div>
+
+                            </div>
+                            <form th:action="@{/update(orderId=${order.id})}" th:object="${simples}" method="POST">
+
+
+                                <div class="row collapse" data-bs-parent="#menu" id="item1">
+
+                                    <div class="col-12 text-start my-2">
+
+                                        <div class="box">
+                                            <input type="checkbox" id="sausage1" name="sausage1" th:field="*{hasSausage}"/>
+                                            <label for="sausage1"><img th:src="@{/img/sausage.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="sausages1" name="sausage1" th:field="*{hasDouble}"/>
+                                            <label for="sausages1"><img th:src="@{/img/sausages.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="tomato1" th:field="*{hasTomato}"/>
+                                            <label for="tomato1"><img th:src="@{/img/tomato.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="ketchup1" th:field="*{hasKetchup}"/>
+                                            <label for="ketchup1"><img th:src="@{/img/ketchup.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="mustard1" th:field="*{hasMustard}"/>
+                                            <label for="mustard1"><img th:src="@{/img/mustard.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="mayonnaise1" th:field="*{hasMayonnaise}"/>
+                                            <label for="mayonnaise1"><img th:src="@{/img/mayonnaise.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="bacon1" th:field="*{hasBacon}"/>
+                                            <label for="bacon1"><img th:src="@{/img/bacon.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="ham1" th:field="*{hasHam}"/>
+                                            <label for="ham1"><img th:src="@{/img/ham.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="cheese1" th:field="*{hasCheese}"/>
+                                            <label for="cheese1"><img th:src="@{/img/cheese.png}"></label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12 text-start">
+                                        <div class="box counter my-2">
+                                            <a href="#" class="btn btn-warning decrease">-</a>
+                                            <input type="text" th:field="*{qtd}">
+                                            <a href="#" class="btn btn-warning increase">+</a>
+                                        </div>
+                                        <div class="box">
+                                            <button type="submit" class="btn btn-success" name="addSimples">Adicionar</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="row border rounded m-5 p-3 shadow">
+                        <div class="col">
+
+                            <div class="row">
+
+                                <div class="col text-start my-2">
+                                    <a href="#item2" data-bs-toggle="collapse" class="item-title align-middle"> Especial </a>
+                                </div>
+
+                            </div>
+                            <form th:action="@{/update(orderId=${order.id})}" th:object="${especial}" method="POST">
+
+                                <div class="row collapse" data-bs-parent="#menu" id="item2">
+
+                                <div class="col-12 text-start my-2">
+
+                                        <div class="box">
+                                            <input type="checkbox" id="sausage2" name="sausage2" th:field="*{hasSausage}"/>
+                                            <label for="sausage2"><img th:src="@{/img/sausage.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="sausages2" name="sausage2" th:field="*{hasDouble}"/>
+                                            <label for="sausages2"><img th:src="@{/img/sausages.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="tomato2" th:field="*{hasTomato}"/>
+                                            <label for="tomato2"><img th:src="@{/img/tomato.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="ketchup2" th:field="*{hasKetchup}"/>
+                                            <label for="ketchup2"><img th:src="@{/img/ketchup.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="mustard2" th:field="*{hasMustard}"/>
+                                            <label for="mustard2"><img th:src="@{/img/mustard.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="mayonnaise2" th:field="*{hasMayonnaise}"/>
+                                            <label for="mayonnaise2"> <img th:src="@{/img/mayonnaise.png}"> </label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="bacon2" th:field="*{hasBacon}"/>
+                                            <label for="bacon2"><img th:src="@{/img/bacon.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="ham2" th:field="*{hasHam}"/>
+                                            <label for="ham2"><img th:src="@{/img/ham.png}"></label>
+                                        </div>
+
+                                        <div class="box">
+                                            <input type="checkbox" id="cheese2" th:field="*{hasCheese}"/>
+                                            <label for="cheese2"><img th:src="@{/img/cheese.png}"></label>
+                                        </div>
+
+                                </div>
+
+                                <div class="col-12 text-start">
+                                    <div class="box my-2 counter">
+                                        <a href="#" class="btn btn-warning decrease">-</a>
+                                        <input type="text" th:field="*{qtd}">
+                                        <a href="#" class="btn btn-warning increase">+</a>
+                                    </div>
+                                    <div class="box">
+                                        <button type="submit" class="btn btn-success" name="addSimples">Adicionar</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script th:src="@{/script.js}"></script>
+</div>
+
+
+
+</body>
+
+</html>

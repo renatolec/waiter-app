@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resumo do pedido</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+          rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link th:href="@{/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container-fluid">
+<div class="row navbar">
+  <div class="col text-center">
+    <a th:href="@{/update(orderId=${order.id})}"> Cardápio </a>
+  </div>
+  <div class="col text-center">
+    <a th:href="@{/orders}"> Home</a>
+  </div>
+  <div class="col text-center">
+    <a th:href="@{/overview(orderId=${order.id})}"> Pedido </a>
+  </div>
+</div>
+</div>
+
+<div class="container text-center" >
+
+
+  <div class="row border rounded mt-3" id="items" >
+
+    <div class="col">
+
+      <div class="row my-3">
+        <h4>Resumo do pedido</h4>
+      </div>
+      <form th:action="@{/overview(orderId=${order.id})}" th:object="${order}" method="POST">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{timeOrdered}">
+        <div th:each="item,it : *{itemsOrdered}" class="row my-3">
+          <input type="hidden" th:id="'sausage-'+${it.index}" th:field="*{itemsOrdered[__${it.index}__].hasSausage}">
+          <input type="hidden" th:id="'tomato-'+${it.index}" th:field="*{itemsOrdered[__${it.index}__].hasTomato}">
+          <input type="hidden" th:id="'ketchup-'+${it.index}" th:field="*{itemsOrdered[__${it.index}__].hasKetchup}">
+          <input type="hidden" th:id="'mustard-'+${it.index}" th:field="*{itemsOrdered[__${it.index}__].hasMustard}">
+          <input type="hidden" th:id="'mayonnaise-'+${it.index}" th:field="*{itemsOrdered[__${it.index}__].hasMayonnaise}">
+          <input type="hidden" th:id="'bacon-'+${it.index}" th:field="*{itemsOrdered[__${it.index}__].hasBacon}">
+          <input type="hidden" th:id="'ham-'+${it.index}" th:field="*{itemsOrdered[__${it.index}__].hasHam}">
+          <input type="hidden" th:id="'cheese-'+${it.index}" th:field="*{itemsOrdered[__${it.index}__].hasCheese}">
+          <input type="hidden" th:id="'double-'+${it.index}" th:field="*{itemsOrdered[__${it.index}__].hasDouble}">
+          <div class="col-6 text-start">
+            <span class="item-quantity align-middle" th:field="*{itemsOrdered[__${it.index}__].qtd}" th:text="*{itemsOrdered[__${it.index}__].qtd}"></span>
+            <span class="item-name align-middle" th:text="*{itemsOrdered[__${it.index}__]}"></span>
+          </div>
+          <div class="col-6 text-end">
+            <button type="submit" class="btn btn-danger" name="removeItem" th:value="${it.index}">Delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+</body>
+
+</html>
